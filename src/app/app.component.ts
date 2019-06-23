@@ -30,11 +30,7 @@ export class AppComponent implements OnInit{
 
 
   clearFields(){
-    $("#exampleModal #patientName").val("");
-    $("#exampleModal #patientEmail").val("");
-    $("#exampleModal #patientPhone").val("");
-    $("#exampleModal #patientGender").val("Male");
-    $("#exampleModal #patientBloodgroup").val("A+");
+    this.setFields("#exampleModal", "", "", "", "Male", "A+")
   }
 
 
