@@ -92,16 +92,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
-    // this.db.list('/users').snapshotChanges().subscribe(dataSnapshot =>{
-    //   this.users = [];
-    //   dataSnapshot.forEach(snapshot => {
-    //     const item = snapshot.payload.toJSON();
-    //     this.users.push(item);
-    //     console.log(item);
-    //   })
-    // }
-    // );
-    // console.log(this.users);
+
   }
   
 
