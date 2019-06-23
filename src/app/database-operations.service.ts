@@ -25,13 +25,10 @@ export class DatabaseOperationsService {
   }
 
   updatePatientFromFirebase(patient){
-    let $key = patient.$key;
-    // console.log("HAHAHAHA " + key);
-    // console.log(patient);
-    
-    // delete patient['$key'];
+    const key = patient.$key;
     delete patient.$key;
-    this.patientList.update($key, patient);
+    
+    this.patientList.update(key, patient);
   }
 
   deletePatientFromFirebase(key){

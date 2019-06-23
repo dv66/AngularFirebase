@@ -63,6 +63,8 @@ export class AppComponent implements OnInit{
     this.clearFields();
   }
 
+
+
   getPatients(){
     this.dataService.getPatientsFromFirebase().snapshotChanges().forEach(userSnapshot => {
       this.patients = [];
@@ -74,20 +76,40 @@ export class AppComponent implements OnInit{
     });
   }
 
+
+
   deletePatient(patient){
     this.dataService.deletePatientFromFirebase(this.currentDeletable);
   }
 
+
+
   launchDeleteDialogue(patient){
     this.currentDeletable= patient['$key'];
   }
+
+
 
   setCurrentEditable(patient){
     this.currentEditPatient = patient;
     this.setFields("#editPatientModal", patient.name, patient.email, patient.phone, patient.gender, patient.bloodgroup);
   }
 
+
+
   updatePatient(){
+    let patientName = $("#editPatientModal #patientName").val();
+    let patientEmail =  $("#editPatientModal #patientEmail").val();
+    let patientPhone = $("#editPatientModal #patientPhone").val();
+    let patientGender = $("#editPatientModal #patientGender").val();
+    let patientBloodgroup =  $("#editPatientModal #patientBloodgroup").val();
+
+    this.currentEditPatient.name = patientName;
+    this.currentEditPatient.email = patientEmail;
+    this.currentEditPatient.phone = patientPhone;
+    this.currentEditPatient.gender = patientGender;
+    this.currentEditPatient.bloodgroup = patientBloodgroup;
+
     this.dataService.updatePatientFromFirebase(this.currentEditPatient);
   }
 
