@@ -7,19 +7,19 @@ import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 export class DatabaseOperationsService {
 
 
-  userList : AngularFireList<any>;
+  patientList : AngularFireList<any>;
 
 
   constructor(private db: AngularFireDatabase) { 
-    this.userList = this.db.list('users');
+    this.patientList = this.db.list('patients');
   }
 
-  getUsersFromFirebase() {
-    return this.userList;
+  getPatientsFromFirebase() {
+    return this.patientList;
   }
 
-  addUserToFirebase(user){
-    this.userList.push(user);
+  addPatientToFirebase(user){
+    this.patientList.push(user);
   }
 
 }

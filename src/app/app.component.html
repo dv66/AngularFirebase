@@ -1,5 +1,117 @@
-<h1>Firebase Integration</h1>
+<div>
+    <h1 style="text-align: center; margin: 40px">Patient Registry</h1>
+</div>
 
-<button (click)="addUser()"> Submit</button>
+
+
+
+
+
+
+
+
+
+
+<div class="container" >
+    <div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Patient</button>
+        
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Add Patient</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Name</label>
+                        <input  type="text" class="form-control" id="patientName">
+                      </div>
+
+                        <div class="form-group">
+                            <label >Gender</label>
+                            <select class="form-control" id="patientGender">
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Others</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                                <label >Blood Group</label>
+                                <select class="form-control" id="patientBloodgroup">
+                                  <option>A+</option>
+                                  <option>B+</option>
+                                  <option>AB+</option>
+                                  <option>O+</option>
+                                  <option>A-</option>
+                                  <option>B-</option>
+                                  <option>AB-</option>
+                                  <option>O-</option>
+                                </select>
+                        </div>
+
+                        <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Email</label>
+                                <input type="email" class="form-control" id="patientEmail">
+                        </div>
+
+                        <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Phone</label>
+                                <input type="text" class="form-control" id="patientPhone">
+                        </div>
+
+
+                        
+
+                      <!-- <div class="form-group">
+                        <label for="message-text" class="col-form-label">Problem</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                      </div> -->
+
+                      
+                      
+
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button (click)="clearFields()" type="button" class="btn btn-secondary" data-dismiss="modal" style="width: 80px">Close</button>
+                    <button (click)="addPatient()" type="button" class="btn btn-primary" data-dismiss="modal" style="width: 80px">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <table class="table" style="border-spacing: 10em">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Patient Name</th>
+                        <th>Blood Group</th>
+                        <th>Gender</th>
+                        <th>Phone</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody *ngFor="let patient of patients">
+                    <tr>
+                        <td></td>
+                        <td>{{patient.name}}</td>
+                        <td>{{patient.bloodgroup}} </td>
+                        <td> {{patient.gender}} </td>
+                        <td> {{patient.phone}} </td>
+                        <td><button type="button" class="btn btn-success" style="width: 70px">Edit</button></td>
+                        <td><button type="button" class="btn btn-danger" style="width: 70px">Delete</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
 
 <router-outlet></router-outlet>
