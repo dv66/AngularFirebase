@@ -14,12 +14,28 @@ export class DatabaseOperationsService {
     this.patientList = this.db.list('patients');
   }
 
+  
+
+  addPatientToFirebase(patient){
+    this.patientList.push(patient);
+  }
+
   getPatientsFromFirebase() {
     return this.patientList;
   }
 
-  addPatientToFirebase(user){
-    this.patientList.push(user);
+  updatePatientFromFirebase(patient){
+    let $key = patient.$key;
+    // console.log("HAHAHAHA " + key);
+    // console.log(patient);
+    
+    // delete patient['$key'];
+    delete patient.$key;
+    this.patientList.update($key, patient);
+  }
+
+  deletePatientFromFirebase(key){
+    this.patientList.remove(key);
   }
 
 }

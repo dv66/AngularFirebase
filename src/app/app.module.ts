@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
+import { PatientFormComponent } from './patient-form/patient-form.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PatientFormComponent
   ],
   imports: [
     BrowserModule,

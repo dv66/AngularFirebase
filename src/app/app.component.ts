@@ -19,6 +19,9 @@ export class AppComponent implements OnInit{
   
   title = 'AngularUsers';
   patients : any;
+  public currentDeletable = null;
+  public currentEditPatient = null;
+  public patientFormModalTitle = "Add Patient";
   
 
   constructor(private dataService: DatabaseOperationsService) {
@@ -33,6 +36,17 @@ export class AppComponent implements OnInit{
     $("#exampleModal #patientGender").val("Male");
     $("#exampleModal #patientBloodgroup").val("A+");
   }
+
+
+  setFields(modalId, name,email,phone,gender,bloodgroup){
+    $(modalId + " #patientName").val(name);
+    $(modalId + " #patientEmail").val(email);
+    $(modalId + " #patientPhone").val(phone);
+    $(modalId + " #patientGender").val(gender);
+    $(modalId + " #patientBloodgroup").val(bloodgroup);
+  }
+
+
 
 
 
@@ -58,6 +72,23 @@ export class AppComponent implements OnInit{
         this.patients.push(patient);
       });
     });
+  }
+
+  deletePatient(patient){
+    this.dataService.deletePatientFromFirebase(this.currentDeletable);
+  }
+
+  launchDeleteDialogue(patient){
+    this.currentDeletable= patient['$key'];
+  }
+
+  setCurrentEditable(patient){
+    this.currentEditPatient = patient;
+    this.setFields("#editPatientModal", patient.name, patient.email, patient.phone, patient.gender, patient.bloodgroup);
+  }
+
+  updatePatient(){
+    this.dataService.updatePatientFromFirebase(this.currentEditPatient);
   }
 
   ngOnInit() {
